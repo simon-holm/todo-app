@@ -9,6 +9,14 @@ import Nav from './Nav.jsx';
 
 //App component - represent the whole App
 class App extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+        hideCompleted: false,
+        };
+    }
+
     handleSubmit(event) {
         event.preventDefault();
 
@@ -24,8 +32,18 @@ class App extends Component {
         ReactDOM.findDOMNode(this.refs.textInput).value = '';
     }
 
+    toggleHideCompleted() {
+        this.setState({
+        hideCompleted: !this.state.hideCompleted,
+        });
+    }
+
     renderTasks() {
-        return this.props.tasks.map((task) => (
+        let filteredTasks = this.props.tasks;
+        if (this.state.hideCompleted) {
+        filteredTasks = filteredTasks.filter(task => !task.checked);
+        }
+        return filteredTasks.map((task) => (
             <Task key={task._id} task={task} />
         ));
     }
@@ -35,7 +53,6 @@ class App extends Component {
             <div>
                 <Nav/>
                 <div className="container">
-                    <header>
                         <h3>What's on your list today?</h3>
                         <div className="card z-depth-1">
                             <div className="card-content col s8 right-align">
@@ -49,9 +66,21 @@ class App extends Component {
                                 </form>
                             </div>
                         </div>
-                    </header>
                     <ul className="collection with-header z-depth-1">
-                        <li className="collection-header"><h4>Todo List</h4></li>
+                        <li className="collection-header">
+                            <h4>Todo List ({this.props.incompleteCount})</h4>
+                            <div className="toolbar">
+                                <span>Hide Completed Tasks</span>
+                                <input
+                                    type="checkbox"
+                                    id="hider"
+                                    readOnly
+                                    checked={this.state.hideCompleted}
+                                    onClick={this.toggleHideCompleted.bind(this)}
+                                />
+                                <label htmlFor="hider" className="hidetoggle"></label>
+                            </div>
+                        </li>
                         {this.renderTasks()}
                     </ul>
                 </div>
@@ -67,5 +96,6 @@ App.PropTypes = {
 export default createContainer(() => {
     return {
         tasks: Tasks.find({}, { sort: { createdAt: -1 } }).fetch(),
+        incompleteCount: Tasks.find({ checked: { $ne: true } }).count(),
     };
 }, App);
