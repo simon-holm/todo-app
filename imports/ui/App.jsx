@@ -36,21 +36,21 @@ class App extends Component {
                 <Nav/>
                 <div className="container">
                     <header>
-                        <h2>Epic ToDo App</h2>
-                        <div className="card">
-                            <div className="card-content col s8">
+                        <h3>What's on your list today?</h3>
+                        <div className="card z-depth-1">
+                            <div className="card-content col s8 right-align">
                                 <form onSubmit={this.handleSubmit.bind(this)} >
                                     <input
                                     type="text"
                                     ref="textInput"
                                     placeholder="Enter new task"
                                     />
-                                    <button type="submit">Add</button>
+                                    <button type="submit" className="waves-effect waves-light btn">Add</button>
                                 </form>
                             </div>
                         </div>
                     </header>
-                    <ul className="collection with-header">
+                    <ul className="collection with-header z-depth-1">
                         <li className="collection-header"><h4>Todo List</h4></li>
                         {this.renderTasks()}
                     </ul>

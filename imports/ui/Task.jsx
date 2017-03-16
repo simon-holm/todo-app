@@ -27,13 +27,21 @@ export default class Task extends Component {
 
                 <span className="text">{this.props.task.text}</span>
 
-                <input
-                    type="checkbox"
-                    id={this.props.task._id}
-                    readOnly
-                    checked={this.props.task.checked}
-                    onClick={this.toggleChecked.bind(this)}
-                />
+                <form action="#" className="checkboxes">
+                    <p>
+                        
+                        <input
+                            type="checkbox"
+                            id={this.props.task._id}
+                            readOnly
+                            checked={this.props.task.checked}
+                            onClick={this.toggleChecked.bind(this)}
+                        />
+                        <label htmlFor={this.props.task._id}></label>
+                        
+                    </p>
+                </form>   
+                
             </li>
         );
     }
