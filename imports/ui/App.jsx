@@ -5,6 +5,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Tasks } from '../api/tasks.js';
 
 import Task from './Task.jsx';
+import Nav from './Nav.jsx';
 
 //App component - represent the whole App
 class App extends Component {
@@ -31,23 +32,29 @@ class App extends Component {
 
     render() {
         return (
-            <div className="container">
-                <header>
-                    <h1>Todo List</h1>
-
-                    <form className="col s12" onSubmit={this.handleSubmit.bind(this)} >
-                        <input
-                        type="text"
-                        ref="textInput"
-                        placeholder="Enter new task"
-                        />
-                    </form>
-
-                </header>
-
-                <ul>
-                    {this.renderTasks()}
-                </ul>
+            <div>
+                <Nav/>
+                <div className="container">
+                    <header>
+                        <h2>Epic ToDo App</h2>
+                        <div className="card">
+                            <div className="card-content col s8">
+                                <form onSubmit={this.handleSubmit.bind(this)} >
+                                    <input
+                                    type="text"
+                                    ref="textInput"
+                                    placeholder="Enter new task"
+                                    />
+                                    <button type="submit">Add</button>
+                                </form>
+                            </div>
+                        </div>
+                    </header>
+                    <ul className="collection with-header">
+                        <li className="collection-header"><h4>Todo List</h4></li>
+                        {this.renderTasks()}
+                    </ul>
+                </div>
             </div>
         );
     }
