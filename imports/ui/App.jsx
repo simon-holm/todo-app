@@ -70,15 +70,18 @@ class App extends Component {
                         <li className="collection-header">
                             <h4>Todo List ({this.props.incompleteCount})</h4>
                             <div className="toolbar">
-                                <span>Hide Completed Tasks</span>
-                                <input
-                                    type="checkbox"
-                                    id="hider"
-                                    readOnly
-                                    checked={this.state.hideCompleted}
-                                    onClick={this.toggleHideCompleted.bind(this)}
-                                />
-                                <label htmlFor="hider" className="hidetoggle"></label>
+                                <div className="switch">
+                                    <label>
+                                        Show
+                                        <input 
+                                            type="checkbox"
+                                            checked={this.state.hideCompleted}
+                                            onClick={this.toggleHideCompleted.bind(this)}
+                                        />
+                                        <span className="lever"></span>
+                                        Hide
+                                    </label>
+                                </div>
                             </div>
                         </li>
                         {this.renderTasks()}
