@@ -14,6 +14,6 @@ export default class AccountsUIWrapper extends Component {
     }
 
     render() {
-        return <li ref="container"></li>;
+        return <a ref="container"></a>;
     }
 }

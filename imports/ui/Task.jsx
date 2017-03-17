@@ -25,11 +25,10 @@ export default class Task extends Component {
                     &times;
                 </button>
 
-                <span className="text">{this.props.task.text}</span>
+                <span className="text"><strong>{this.props.task.username}</strong>: {this.props.task.text}</span>
 
                 <form action="#" className="checkboxes">
                     <p>
-                        
                         <input
                             type="checkbox"
                             id={this.props.task._id}
