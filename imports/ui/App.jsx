@@ -7,7 +7,7 @@ import { Tasks } from '../api/tasks.js';
 import Task from './Task.jsx';
 import Nav from './Nav.jsx';
 
-//App component - represent the whole App
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -20,15 +20,13 @@ class App extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        //Find the text field via the React ref
         const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
 
         Tasks.insert({
             text,
-            createdAt: new Date(), //grab current time
+            createdAt: new Date(),
         });
 
-        //Clear the form
         ReactDOM.findDOMNode(this.refs.textInput).value = '';
     }
 

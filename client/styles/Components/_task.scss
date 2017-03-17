@@ -10,10 +10,10 @@
     background-color: $delbutton;
     height: 1.6rem;
     line-height: 5px;
+    border-radius: 50%;
 }
 .btn-large:hover {
         background-color: #bb0d0d;
-        transform:scale(0.98);
 }
 .btn-large:active {
         background-color: #bb0d0d;
