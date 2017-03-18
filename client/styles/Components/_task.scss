@@ -1,6 +1,16 @@
+
 .text {
     font-size: 1.4rem;
     margin-left: 5%;
+    @media (max-width:414px) {
+        font-size: 1.2rem;
+        margin-left: 2%;
+    }
+    @media (max-width:360px) {
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-left: 2%;
+    }
 }
 
 .btn-large {
@@ -24,4 +34,37 @@
 }
 ul > li > form > p {
     margin-top: 0px;
+}
+
+.privbtn {
+    margin-top: -5px;
+    width: 15%;
+    padding: 0 2rem;
+    padding-top: 0px;
+    padding-right: 0rem;
+    padding-bottom: 0px;
+    padding-left: 0rem;
+    @media (max-width:414px) {
+        display:none;
+    }
+}
+.privatemarked {
+    background-color: #444948;
+}
+.privatemarked:active, .privatemarked:hover {
+    background-color:#444948; 
+}
+
+@media (max-width:768px) {
+    .collection .collection-item {
+        background-color: #fff;
+        line-height: 1.5rem;
+        padding-top: 10px;
+        padding-right: 2px;
+        padding-bottom: 10px;
+        padding-left: 3px!important;
+        margin: 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
 }
